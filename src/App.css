@@ -1,0 +1,98 @@
+.my-products-title-section {
+  display: flex;
+  flex-direction: column;
+
+  .my-products-title-card {
+    min-height: 260px;
+    background-color: #e6f1fe;
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    padding: 15px 30px;
+
+    .my-products-title {
+      min-height: 182px;
+
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      .title-wrapper {
+        max-width: 600px;
+
+        h1 {
+          margin: 16px 0;
+        }
+      }
+
+      .my-products-image {
+        display: inline-block;
+        width: 248px;
+        height: 248px;
+        background-image: url("./assets/products/quick-buy-bg.webp");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+
+      .my-products-button {
+        align-self: center;
+      }
+    }
+  }
+
+  .my-products-list {
+    align-self: flex-end;
+    width: fit-content;
+
+    background-color: white;
+    border: 1px solid silver;
+    border-radius: 24px 0 0 0;
+  }
+}
+
+.featured-categories {
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  .featured-categories-list {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+
+    .featured-categories-list-items {
+      width: fit-content;
+    }
+  }
+}
+
+.sponsored-title-section {
+  h2 {
+    margin: 20px 0;
+  }
+
+  .sponsored-list {
+    background-color: white;
+    border: 1px solid silver;
+  }
+}
+
+@media (min-width: 1024px) {
+  .my-products-image {
+    margin-top: -64px;
+  }
+
+  .my-products-list {
+    align-self: flex-end;
+    margin-top: -64px;
+    margin-left: 64px;
+    width: fit-content;
+
+    background-color: white;
+    border: 1px solid silver;
+    border-radius: 24px 0 0 0;
+  }
+}
