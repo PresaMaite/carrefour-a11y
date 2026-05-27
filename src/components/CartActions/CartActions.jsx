@@ -4,7 +4,6 @@ import Button from "../Button/Button";
 import Trash from "../../assets/icons/trash3.svg";
 import Plus from "../../assets/icons/plus-lg.svg";
 import Minus from "../../assets/icons/dash-lg.svg";
-import "../cartProduct/cartProduct.css";
 import { useCart } from "../../context/CartContext.jsx";
 
 const CartActions = ({ productName = "Producto", product }) => {
