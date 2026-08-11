@@ -1,0 +1,131 @@
+footer {
+  background-color: #f4f4f4;
+  margin-top: 40px;
+  padding: 20px;
+}
+
+footer .footer-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ============= VERSIÓN MOBILE ============= */
+.footer-mobile {
+  min-height: 544px;
+  display: block;
+}
+
+/* Estilos del contenedor principal */
+.desplegable-accesible {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* Estilos del botón del título */
+.desplegable-accesible summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  list-style: none; /* Oculta la flecha por defecto del navegador */
+}
+
+/* Oculta la flecha por defecto en navegadores basados en Webkit (Safari) */
+.desplegable-accesible summary::-webkit-details-marker {
+  display: none;
+}
+
+summary::marker {
+  content: "";
+}
+
+/* Flecha personalizada a la derecha */
+summary::after {
+  content: "▼";
+  transition: transform 0.2s;
+}
+
+/* Rotación del chevron cuando el desplegable está abierto */
+.desplegable-accesible[open] summary::after {
+  transform: rotate(180deg);
+}
+
+/* Estilos del contenido interior */
+.desplegable-accesible .contenido {
+  border-top: 1px solid #ccc;
+  padding: 8px 12px;
+}
+
+.desplegable-accesible ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.desplegable-accesible li {
+  margin: 8px 0;
+}
+
+.desplegable-accesible a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.desplegable-accesible a:hover,
+.desplegable-accesible a:focus {
+  text-decoration: underline;
+}
+
+/* ============= VERSIÓN DESKTOP ============= */
+.footer-desktop {
+  min-height: auto;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-section {
+  flex: 1 1 18%;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-section h3 {
+  margin: 0 0 15px 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-section li {
+  margin: 0;
+}
+
+/* Media query para desktop 1280px y superior */
+@media (min-width: 1280px) {
+  .footer-mobile {
+    display: none;
+  }
+
+  .footer-desktop {
+    display: block;
+  }
+}

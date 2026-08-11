@@ -1,9 +1,11 @@
 :root {
   --text: #121212;
   --text-light: #666;
-  --color-red: red;
+  --color-red: #d30d1f;
   --color-blue: #0970e6;
   --color-blue-dark: #0759b8;
+  --color-blue-endeavour: #00529c;
+  --color-blue-light: #f5faff;
   --text-h: #08060d;
   --bg: #fff;
   --border: #e5e4e7;
@@ -61,6 +63,10 @@
   padding: 0;
   margin: 0;
   line-height: calc(1rem * 1.5);
+  &:focus-visible {
+    outline: 2px solid var(--color-blue);
+    outline-offset: 2px;
+  }
 }
 
 main {
@@ -90,10 +96,18 @@ button {
 a {
   text-decoration: none;
   color: inherit;
+  &:focus-visible {
+    outline: 2px solid black;
+    outline-offset: 2px;
+  }
 }
 
 input {
   font-size: 1rem;
+  &:focus-visible {
+    outline: 2px solid black;
+    outline-offset: 0;
+  }
 }
 
 input[type="number"]::-webkit-outer-spin-button,

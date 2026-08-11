@@ -11,10 +11,15 @@ import banner9 from "../../assets/marketing/20260506-mega-banner-semana-de-inter
 import banner10 from "../../assets/marketing/servicio-drive__ts1740997408526.jpg";
 import banner11 from "../../assets/marketing/banners-ecommerce-crf-1280x111__ts1776678154072.png";
 import banner12 from "../../assets/marketing/cintillo_deskimbatible_lomo_15mayo__ts1778754970278.jpg";
+import Skiplink from "../Skiplink/Skiplink";
 
 const Marketing = () => {
   return (
-    <section>
+    <section aria-labelledby="marketing-title">
+      <Skiplink text="Saltar promociones" href="#marketing-end" />
+      <h2 id="marketing-title" className="visually-hidden">
+        Promociones
+      </h2>
       <div className="grid-container">
         <div className="grid-item one">
           <a href="#">

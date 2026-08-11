@@ -6,6 +6,7 @@ const Button = ({
   icon,
   ariaLabel = null,
   onClick = null,
+  pressed = null,
 }) => {
   return (
     <button
@@ -13,6 +14,7 @@ const Button = ({
       aria-label={ariaLabel}
       onClick={onClick}
       aria-haspopup={null}
+      aria-pressed={pressed}
     >
       {icon && <img src={icon} alt="" />} {text}
     </button>

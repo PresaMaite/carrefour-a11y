@@ -6,15 +6,23 @@ import user from "../../assets/icons/person.svg";
 import cartIcon from "../../assets/icons/cart.svg";
 import searchIcon from "../../assets/icons/search.svg";
 import Link from "../Link/Link";
+import Skiplink from "../Skiplink/Skiplink";
 
 const Header = ({ headerType = "classic" }) => {
   return (
     <>
       {headerType === "classic" ? (
         <header className="header-container">
+          <Skiplink text="Saltar al contenido principal" href="#main-content" />
           <img src={carrefourLogo} className="logo" alt="Carrefour logo" />
 
-          <p>Menú</p>
+          <button
+            className="menu-label"
+            aria-expanded="false"
+            aria-haspopup="true"
+          >
+            Menú
+          </button>
 
           <Link href="/folletos" name="Folletos" />
 

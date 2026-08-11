@@ -14,6 +14,9 @@
     outline: 2px solid white;
     outline-offset: -4px;
   }
+  &:active {
+    background-color: var(--color-blue-endeavour);
+  }
 }
 
 .secondary {
@@ -33,6 +36,17 @@
   font-weight: bold;
 
   width: 100%;
+
+  &:hover {
+    background-color: var(--color-blue-dark);
+  }
+  &:focus-visible {
+    outline: 2px solid white;
+    outline-offset: -4px;
+  }
+  &:active {
+    background-color: var(--color-blue-endeavour);
+  }
 }
 
 .icon {
@@ -40,6 +54,27 @@
   height: 44px;
   border-radius: 8px;
 }
-.icon:focus-visible {
-  border: 2px solid var(--color-blue);
+
+.icon-heart {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+
+  align-self: flex-end;
+  padding-top: 8px;
+  border: none;
+
+  img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) saturate(100%) invert(15%) sepia(45%) saturate(7136%)
+      hue-rotate(196deg) brightness(92%) contrast(103%);
+  }
+
+  &[aria-pressed="true"] {
+    img {
+      filter: brightness(0) saturate(100%) invert(52%) sepia(76%)
+        saturate(7497%) hue-rotate(202deg) brightness(97%) contrast(93%);
+    }
+  }
 }

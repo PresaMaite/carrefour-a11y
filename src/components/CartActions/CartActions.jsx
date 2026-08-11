@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import "./cartActions.css";
 
 import Button from "../Button/Button";
@@ -12,87 +13,107 @@ const CartActions = ({ productName = "Producto", product }) => {
     decrementItem,
     setItemCount,
     showDeleteConfirm,
-    showAdded,
     getItemCount,
   } = useCart();
 
+  const [liveMessage, setLiveMessage] = useState("");
   const count = getItemCount(product);
 
-  const handleIncrement = () => addItem(product);
+  useEffect(() => {
+    if (count === 0) {
+      setTimeout(() => {
+        setLiveMessage(`${productName} eliminado de la cesta`);
+      }, 0);
+    }
+  }, [count, productName]);
+
+  const handleIncrement = () => {
+    addItem(product);
+    setLiveMessage(`${productName} cantidad ${count + 1}`);
+  };
+
   const handleDecrement = () => {
     if (count <= 1) {
       showDeleteConfirm(product.id || product.description);
     } else {
       decrementItem(product);
+      setLiveMessage(`${productName} cantidad ${count - 1}`);
     }
   };
+
   const handleQuantityChange = (e) => {
     const val = Number(e.target.value);
     if (val === 0) {
       showDeleteConfirm(product.id || product.description);
     } else {
       setItemCount(product, val);
+      setLiveMessage(`${productName} cantidad ${val}`);
     }
   };
-  const handleRemove = () =>
-    showDeleteConfirm(product.id || product.description);
 
-  // If not in cart, show a single Add button
-  if (count === 0) {
-    return (
-      <div className="cart-product-actions">
+  const handleRemove = () => {
+    showDeleteConfirm(product.id || product.description);
+  };
+
+  return (
+    <div className="cart-product-actions">
+      {count === 0 ? (
         <Button
           classStyles="primary"
           text="Añadir"
           ariaLabel={`Añadir ${productName} al carrito`}
           onClick={() => {
             addItem(product);
-            showAdded(product);
+            setLiveMessage(`${productName} añadido a la cesta`);
           }}
         />
-      </div>
-    );
-  }
+      ) : (
+        <>
+          <div className="cart-product-quantity">
+            <Button
+              type="button"
+              classStyles="primary"
+              icon={Minus}
+              onClick={handleDecrement}
+              ariaLabel={`Disminuir cantidad de ${productName}`}
+            />
+            <label
+              htmlFor={`quantity-${product.id}`}
+              className="visually-hidden"
+            >
+              Cantidad {productName}:
+            </label>
+            <input
+              type="number"
+              id={`quantity-${product.id}`}
+              name={`quantity-${product.id}`}
+              min="1"
+              value={count}
+              onChange={handleQuantityChange}
+            />
+            <Button
+              type="button"
+              classStyles="primary"
+              icon={Plus}
+              onClick={handleIncrement}
+              ariaLabel={`Aumentar cantidad de ${productName}`}
+            />
+          </div>
 
-  // Otherwise show increment/decrement/quantity/remove controls
-  return (
-    <div className="cart-product-actions">
-      <div className="cart-product-quantity">
-        <Button
-          type="button"
-          classStyles="primary"
-          icon={Minus}
-          onClick={handleDecrement}
-          ariaLabel={`Disminuir cantidad de ${productName}`}
-        />
-        <label htmlFor={`quantity-${product.id}`} className="visually-hidden">
-          Cantidad {productName}:
-        </label>
-        <input
-          type="number"
-          id={`quantity-${product.id}`}
-          name={`quantity-${product.id}`}
-          min="1"
-          value={count}
-          onChange={handleQuantityChange}
-        />
-        <Button
-          type="button"
-          classStyles="primary"
-          icon={Plus}
-          onClick={handleIncrement}
-          ariaLabel={`Aumentar cantidad de ${productName}`}
-        />
-      </div>
+          <Button
+            type="button"
+            buttonType="secondary"
+            ariaLabel={`Eliminar ${productName}`}
+            classStyles="secondary"
+            icon={Trash}
+            onClick={handleRemove}
+          />
+        </>
+      )}
 
-      <Button
-        type="button"
-        buttonType="secondary"
-        ariaLabel={`Eliminar ${productName}`}
-        classStyles="secondary"
-        icon={Trash}
-        onClick={handleRemove}
-      />
+      <div aria-live="assertive" aria-atomic="true" className="visually-hidden">
+        {liveMessage}
+      </div>
     </div>
   );
 };

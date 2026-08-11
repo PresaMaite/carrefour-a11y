@@ -1,27 +1,69 @@
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
 .modal {
-  background: #fff;
-  padding: 24px;
+  border: none;
   border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  min-width: 280px;
+  padding: 24px;
+  width: 90%;
+  max-width: 75ch;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  background-color: white;
+
+  /* SOLUCIÓN: Sobrescribe el "margin: 0" del selector universal */
+  margin: auto;
 }
 
-.modal button {
+/* Estilos para el fondo oscuro difuminado */
+.modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px); /* Opcional: difumina el fondo */
+}
+
+.modal-title {
+  margin-bottom: 20px;
+}
+
+/* Estilos internos para tus elementos */
+#dialog_desc {
+  margin: 0 0 20px 0;
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.modal-actions button {
   padding: 8px 16px;
   border-radius: 4px;
-  cursor: pointer;
   border: 1px solid #ccc;
-  background: #f5f5f5;
+  background: var(--color-blue-light);
+  color: var(--color-blue-endeavour);
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-blue);
+    outline-offset: 2px;
+  }
+}
+
+.modal-actions button:last-child {
+  background: var(--color-blue);
+  color: white;
+}
+
+.modal-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
 }

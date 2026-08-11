@@ -1,5 +1,7 @@
+import { useState } from "react";
 import Button from "../Button/Button";
 import heart from "../../assets/icons/heart.svg";
+import heartFill from "../../assets/icons/heart-fill.svg";
 import "./cardProduct.css";
 import { useCart } from "../../context/CartContext.jsx";
 import CartActions from "../CartActions/CartActions";
@@ -23,6 +25,9 @@ const CardProduct = ({
     link,
     productType,
   };
+
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [liveMessage, setLiveMessage] = useState("");
   const { getItemCount } = useCart();
   const productCount = getItemCount(productToSave);
 
@@ -35,10 +40,21 @@ const CardProduct = ({
   return (
     <article className="card-product" aria-labelledby={`product-${id}-title`}>
       <Button
-        classStyles="icon"
-        icon={heart}
-        ariaLabel={`Añadir a favoritos ${description}`}
+        classStyles="icon-heart"
+        icon={isFavorite ? heartFill : heart}
+        ariaLabel={`Añadir ${description} a favoritos`}
+        pressed={isFavorite}
+        onClick={() => {
+          setIsFavorite(!isFavorite);
+          setLiveMessage(
+            isFavorite ? `Eliminado de favoritos` : `Añadido a favoritos`,
+          );
+        }}
       ></Button>
+      <span aria-live="polite" className="visually-hidden">
+        {liveMessage}
+      </span>
+
       <img
         className="card-image"
         src={image}

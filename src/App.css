@@ -80,6 +80,114 @@
   }
 }
 
+.discovered-categories {
+  h2 {
+    margin: 20px 0;
+  }
+
+  .discovered-categories-list {
+    display: flex;
+    justify-content: space-between;
+    row-gap: 44px;
+    column-gap: 16px;
+    flex-wrap: wrap;
+
+    .discovered-categories-list-items {
+      flex: 1 1 24%;
+      min-height: 80px;
+      background-color: var(--color-blue-light);
+      color: var(--color-blue-endeavour);
+      padding: 20px 40px;
+      border-radius: 8px;
+      text-align: center;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      a {
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.forgot-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  padding: 16px;
+  background-color: var(--color-blue-light);
+  border-radius: 8px;
+
+  color: var(--color-blue-endeavour);
+
+  h2 {
+    flex: 1 1 280px;
+    margin: 20px 0;
+    color: var(--color-blue-endeavour);
+  }
+
+  .forgot-items-text {
+    flex: 1 1 75%;
+    font-size: 1.25rem;
+    span {
+      font-size: 1rem;
+      font-weight: bold;
+    }
+    a {
+      text-decoration: underline;
+    }
+  }
+}
+
+.services {
+  h2 {
+    margin: 20px 0;
+  }
+
+  .services-list {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+
+    .services-list-items {
+      flex: 1 1 19%;
+      border-radius: 8px;
+      text-align: center;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.online-supermarket {
+  h2 {
+    margin: 20px 0;
+  }
+
+  .online-supermarket-text {
+    a {
+      font-weight: bold;
+      color: var(--color-blue);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
 @media (min-width: 1024px) {
   .my-products-image {
     margin-top: -64px;

@@ -17,13 +17,14 @@ export function ModalHandler() {
         onConfirm={deleteConfirm !== null ? confirmDelete : null}
         message={
           deleteConfirm !== null
-            ? "¿Eliminar este producto del carrito?"
+            ? "¿Estás seguro de que querer eliminar este producto? Una vez eliminado desaparecerá de la cesta de la compra."
             : message
         }
         onClose={deleteConfirm !== null ? cancelDelete : closeModal}
         showButtons={deleteConfirm !== null}
         showCloseButton={message !== null}
-        confirmText="Sí, eliminar"
+        confirmText="Eliminar"
+        title="Eliminar producto"
       />
     </>
   );
