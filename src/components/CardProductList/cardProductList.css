@@ -21,7 +21,9 @@
   }
 }
 
-.card-reminder-list {
+.card-reminder-list,
+.card-cartSponsored-list,
+.card-cartForget-list {
   display: flex;
   flex-wrap: wrap;
   /* align-items: stretch; */

@@ -51,6 +51,7 @@
       .card-description {
         font-size: 1rem;
         color: var(--text);
+        min-height: 4rem;
       }
     }
   }

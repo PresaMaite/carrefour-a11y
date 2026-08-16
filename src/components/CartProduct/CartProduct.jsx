@@ -2,7 +2,7 @@ import "./cartProduct.css";
 
 import CartActions from "../CartActions/CartActions";
 
-const CartProduct = ({ product }) => {
+const CartProduct = ({ product, isCart = false }) => {
   const { description: productName = "Producto", image: imgSrc = "" } =
     product || {};
 
@@ -20,7 +20,11 @@ const CartProduct = ({ product }) => {
 
       <div className="cart-product-info">
         <h2>{productName}</h2>
-        <CartActions productName={productName} product={product} />
+        <CartActions
+          productName={productName}
+          product={product}
+          isCart={isCart}
+        />
         <div className="cart-product-price">{priceDisplay}€</div>
       </div>
     </div>

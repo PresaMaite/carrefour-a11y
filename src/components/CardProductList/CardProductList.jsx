@@ -5,12 +5,24 @@ import productImg2 from "../../assets/products/314729_00_1.webp";
 import productImg3 from "../../assets/products/352809_00_1.webp";
 import productImg4 from "../../assets/products/500749_00_1.webp";
 import productImg5 from "../../assets/products/671402_00_1.webp";
+
 import sponsoredImg1 from "../../assets/sponsored-products/026430_00_1.webp";
 import sponsoredImg2 from "../../assets/sponsored-products/058404_00_1.webp";
 import sponsoredImg3 from "../../assets/sponsored-products/346708_00_1.webp";
 import sponsoredImg4 from "../../assets/sponsored-products/354442_00_1.webp";
 import sponsoredImg5 from "../../assets/sponsored-products/492621_00_1.webp";
 import sponsoredImg6 from "../../assets/sponsored-products/613093_00_1.webp";
+
+import cartSponsoredImg1 from "../../assets/cart-sponsored-products/Café-cápsulas-blonde-espresso-roast.png";
+import cartSponsoredImg2 from "../../assets/cart-sponsored-products/Café-cápsulas-Colombia.png";
+import cartSponsoredImg3 from "../../assets/cart-sponsored-products/Café-cápsulas-Guatemala.png";
+import cartSponsoredImg4 from "../../assets/cart-sponsored-products/Café-espresso-South-Asia.png";
+
+import cartForgetImg1 from "../../assets/cart-forget/Gustosines-Cheetos.png";
+import cartForgetImg2 from "../../assets/cart-forget/Cruesli-Quaker.png";
+import cartForgetImg3 from "../../assets/cart-forget/Huevos-Camperos.png";
+import cartForgetImg4 from "../../assets/cart-forget/Patata-lavada.png";
+
 let CardProductList = ({ productType }) => {
   let products = [
     {
@@ -150,8 +162,87 @@ let CardProductList = ({ productType }) => {
       description: "Actimel 0% azúcares 6x100g",
       link: "#",
       image: sponsoredImg4,
-      price: 4.35,
-      kgPrice: 7.25,
+      price: 4.15,
+      kgPrice: 0.42,
+      discount: false,
+    },
+  ];
+
+  const cartSponsored = [
+    {
+      id: "espresso-south-asia",
+      description: "Café cápsulas South Asia Starbucks 18 uds",
+      link: "#",
+      image: cartSponsoredImg4,
+      price: 2.89,
+      kgPrice: 0.58,
+      discount: false,
+    },
+    {
+      id: "espresso-Colombia",
+      description: "Café cápsulas Colombia Starbucks 10 uds",
+      link: "#",
+      image: cartSponsoredImg2,
+      price: 4.49,
+      kgPrice: 0.45,
+      discount: false,
+    },
+    {
+      id: "espresso-Guatemala",
+      description: "Café cápsulas Guatemala Starbucks 10 uds",
+      link: "#",
+      image: cartSponsoredImg3,
+      price: 4.29,
+      kgPrice: 0.43,
+      discount: false,
+    },
+    {
+      id: "espresso-blonde",
+      description: "Café cápsulas blonde Starbucks 18 uds",
+      link: "#",
+      image: cartSponsoredImg1,
+      price: 7.75,
+      kgPrice: 0.43,
+      discount: false,
+    },
+  ];
+
+  const cartForget = [
+    {
+      id: "patata-lavada",
+      description: "Patata lavada para todo uso Carrefour El Mercado 3 kg",
+      link: "#",
+      image: cartForgetImg4,
+      price: 4.65,
+      kgPrice: 1.55,
+      discount: false,
+    },
+    {
+      id: "cereales-cruesli",
+      description:
+        "Cereales con avena integral y chocolate Cruesli Quaker 375 g.",
+      link: "#",
+      image: cartForgetImg2,
+      price: 5.39,
+      kgPrice: 14.37,
+      discount: false,
+    },
+    {
+      id: "huevos-camperos",
+      description: "Huevos Camperos Círculo de Calidad 12 ud.",
+      link: "#",
+      image: cartForgetImg3,
+      price: 4.05,
+      kgPrice: 4.05,
+      discount: false,
+    },
+    {
+      id: "gustosines-cheetos",
+      description: "Aperitivo de maíz Gustosines Cheetos 75 g.",
+      link: "#",
+      image: cartForgetImg1,
+      price: 1.64,
+      kgPrice: 21.87,
       discount: false,
     },
   ];
@@ -160,6 +251,8 @@ let CardProductList = ({ productType }) => {
     products,
     sponsored,
     reminder,
+    cartSponsored,
+    cartForget,
   };
 
   return (

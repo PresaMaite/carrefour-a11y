@@ -5,12 +5,32 @@ import Header from "../../components/Header/Header";
 import LeftArrow from "../../assets/icons/arrow-left.svg";
 import Button from "../../components/Button/Button";
 import CartProduct from "../../components/CartProduct/CartProduct";
+
+import Pagos from "../../assets/footer-icons/Métodos de pago.png";
+
 import { useCart } from "../../context/CartContext.jsx";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const Cart = () => {
   const { data, getCartPrice } = useCart();
   const [total, setTotal] = useState(3.99);
+
+  const [cupon, setCupon] = useState("");
+  const cuponRef = useRef(null);
+  const [error, setError] = useState("");
+
+  const handleSubmit = () => {
+    let isValidFormat = /^[a-zA-Z0-9]+$/.test(cupon);
+    if (cupon === "DESC25") {
+      setError("");
+    } else if (!isValidFormat) {
+      setError("El cupón no es válido.");
+      cuponRef.current?.focus();
+    } else {
+      setError("El cupón introducido no existe.");
+      cuponRef.current?.focus();
+    }
+  };
 
   const totalCount = data.reduce((s, p) => s + (p.count || 1), 0);
 
@@ -43,7 +63,7 @@ const Cart = () => {
               ) : (
                 data.map((p) => (
                   <li key={p.id}>
-                    <CartProduct product={p} />
+                    <CartProduct product={p} isCart={true} />
                   </li>
                 ))
               )}
@@ -51,15 +71,15 @@ const Cart = () => {
 
             <section aria-labelledby="cart-reminder-title">
               <h2 id="cart-reminder-title">Que no se te olvide</h2>
-              <div className="cart-product-list" aria-label="Mis productos">
-                <CardProductList productType="reminder" />
+              <div className="cart-product-list">
+                <CardProductList productType="cartForget" />
               </div>
             </section>
           </section>
           <section aria-labelledby="cart-sponsored-title">
             <h2 id="cart-sponsored-title">Productos patrocinados</h2>
-            <div className="cart-product-list" aria-label="Mis productos">
-              <CardProductList productType="reminder" />
+            <div className="cart-product-list">
+              <CardProductList productType="cartSponsored" />
             </div>
           </section>
         </main>
@@ -73,18 +93,41 @@ const Cart = () => {
               <form
                 aria-label="Introducir cupón"
                 onSubmit={(e) => {
+                  handleSubmit();
                   e.preventDefault();
                 }}
               >
-                <label htmlFor="cupon" className="visually-hidden">
-                  Cupón
-                </label>
-                <input
-                  name="cupon"
-                  type="text"
-                  id="cupon"
-                  placeholder="Inserta un cupón"
-                ></input>
+                <div className="cart-coupon-input">
+                  <label htmlFor="cupon">Cupón</label>
+                  <span id="ayuda-cupon" className="texto-ayuda">
+                    Introduce solo letras y números.
+                  </span>
+                  <input
+                    name="cupon"
+                    type="text"
+                    id="cupon"
+                    ref={cuponRef}
+                    onChange={() => {
+                      setCupon(event.target.value);
+                    }}
+                    placeholder="Ej: DESC25"
+                    aria-describedby={`"ayuda-cupon" ${error ? "cupon-error" : undefined}`}
+                    aria-invalid={error ? "true" : "false"}
+                  ></input>
+
+                  {error && (
+                    <p className="cupon-error" id="cupon-error">
+                      {error}
+                    </p>
+                  )}
+
+                  {cupon === "DESC25" && (
+                    <p className="cupon-valid" id="cupon-valid">
+                      {cupon === "DESC25"}
+                    </p>
+                  )}
+                </div>
+
                 <Button
                   ariaLabel="Validar cupón"
                   type="submit"
@@ -129,6 +172,21 @@ const Cart = () => {
           </section>
         </aside>
       </div>
+      <footer className="cart-footer">
+        <section aria-labelledby="cart-payment-title" className="cart-payment">
+          <h3 id="cart-payment-title" className="visually-hidden">
+            Métodos de pago
+          </h3>
+          <span>100% Seguro</span>
+          <a href="#">
+            <img
+              src={Pagos}
+              alt="Métodos aceptados: PASS, Mastercard, Visa, American Express y PayPal"
+              title="PASS, Mastercard, Visa, American Express y PayPal"
+            />
+          </a>
+        </section>
+      </footer>
     </>
   );
 };

@@ -7,7 +7,7 @@ import Plus from "../../assets/icons/plus-lg.svg";
 import Minus from "../../assets/icons/dash-lg.svg";
 import { useCart } from "../../context/CartContext.jsx";
 
-const CartActions = ({ productName = "Producto", product }) => {
+const CartActions = ({ productName = "Producto", product, isCart = false }) => {
   const {
     addItem,
     decrementItem,
@@ -78,15 +78,15 @@ const CartActions = ({ productName = "Producto", product }) => {
               ariaLabel={`Disminuir cantidad de ${productName}`}
             />
             <label
-              htmlFor={`quantity-${product.id}`}
+              htmlFor={`${isCart ? "cart" : "product"}-${product.id}`}
               className="visually-hidden"
             >
               Cantidad {productName}:
             </label>
             <input
               type="number"
-              id={`quantity-${product.id}`}
-              name={`quantity-${product.id}`}
+              id={`${isCart ? "cart" : "product"}-${product.id}`}
+              name={`${isCart ? "cart" : "product"}-${product.id}`}
               min="1"
               value={count}
               onChange={handleQuantityChange}

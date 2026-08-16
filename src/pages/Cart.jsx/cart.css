@@ -40,24 +40,52 @@
         display: flex;
         align-items: center;
 
-        input {
+        .cart-coupon-input {
+          display: flex;
+          flex-direction: column;
           width: calc(100% - 72px);
-          min-height: 54px;
-          padding-left: 16px;
-          margin-right: -4px;
-          border: 1px solid silver;
-          border-radius: 4px 0 0 4px;
+
+          label {
+            margin-bottom: 4px;
+            font-weight: bold;
+          }
+
+          .texto-ayuda {
+            font-size: 0.8rem;
+            margin-bottom: 4px;
+          }
+
+          input {
+            width: 100%;
+            min-height: 54px;
+            padding-left: 16px;
+            margin-right: -4px;
+            border: 1px solid silver;
+            border-radius: 4px 0 0 4px;
+
+            &[aria-invalid="true"]:focus-visible,
+            &[aria-invalid="true"] {
+              border: 1px solid var(--color-red);
+              outline: 2px solid var(--color-red);
+            }
+          }
+
+          .cupon-error {
+            color: var(--color-red);
+            font-size: 0.8rem;
+          }
+        }
+
+        .cart-coupon-input:has(input[aria-invalid="true"]) ~ button {
+          align-self: auto;
+          margin-top: 2rem;
         }
 
         button {
           padding: 0 12px;
-          background-color: #0970e6;
-          color: #fff;
           min-height: 54px;
           width: fit-content;
           border-radius: 4px;
-
-          font-weight: bold;
         }
       }
     }
@@ -70,6 +98,8 @@
       border-radius: 10px;
       padding: 16px;
       border: 1px solid silver;
+
+      margin-top: calc(1.5rem + 8px);
 
       .cart-summary-list {
         width: 100%;
@@ -103,6 +133,29 @@
 
   .cart {
     width: 100%;
+  }
+}
+
+.cart-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+
+  .cart-payment {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      object-fit: cover;
+    }
   }
 }
 
