@@ -42,18 +42,16 @@ const CardProduct = ({
       <Button
         classStyles="icon-heart"
         icon={isFavorite ? heartFill : heart}
-        ariaLabel={`Añadir ${description} a favoritos`}
+        ariaLabel={
+          isFavorite
+            ? `Quitar ${description} de favoritos.`
+            : `Añadir ${description} a favoritos.`
+        }
         pressed={isFavorite}
         onClick={() => {
           setIsFavorite(!isFavorite);
-          setLiveMessage(
-            isFavorite ? `Eliminado de favoritos` : `Añadido a favoritos`,
-          );
         }}
       ></Button>
-      <span aria-live="polite" className="visually-hidden">
-        {liveMessage}
-      </span>
 
       <img
         className="card-image"
@@ -82,15 +80,9 @@ const CardProduct = ({
         </p>
 
         <a href={link} className="card-link" aria-hidden="true">
-          {productType === "products" ? (
-            <h2 className="card-description" id={`product-${id}-title`}>
-              {description}
-            </h2>
-          ) : (
-            <h3 className="card-description" id={`product-${id}-title`}>
-              {description}
-            </h3>
-          )}
+          <h3 className="card-description" id={`product-${id}-title`}>
+            {description}
+          </h3>
         </a>
       </div>
       <CartActions

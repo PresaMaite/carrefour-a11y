@@ -20,7 +20,7 @@ const CartModal = ({
     // Guarda el elemento activo actual (el botón que lanzó el modal)
     previousFocusRef.current = document.activeElement;
 
-    // Abre el modal nativo (asigna el primer foco automáticamente)
+    // Abre el modal nativo
     dialog.showModal();
 
     // Detiene el scroll del body al abrir el modal
@@ -132,7 +132,9 @@ const CartModal = ({
       <p id="dialog_desc">{message}</p>
       {showButtons && (
         <div className="modal-actions">
-          <button onClick={onClose}>Cancelar</button>
+          <button autoFocus onClick={onClose}>
+            Cancelar
+          </button>
           <button onClick={onConfirm}>{confirmText}</button>
         </div>
       )}
