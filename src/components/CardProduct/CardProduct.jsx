@@ -78,7 +78,7 @@ const CardProduct = ({
           )}
         </p>
 
-        <a href={link} className="card-link" aria-hidden="true">
+        <a href={link} className="card-link">
           <h3 className="card-description" id={`product-${id}-title`}>
             {description}
           </h3>
