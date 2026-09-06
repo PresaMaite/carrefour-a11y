@@ -27,7 +27,6 @@ const CardProduct = ({
   };
 
   const [isFavorite, setIsFavorite] = useState(false);
-  const [liveMessage, setLiveMessage] = useState("");
   const { getItemCount } = useCart();
   const productCount = getItemCount(productToSave);
 
