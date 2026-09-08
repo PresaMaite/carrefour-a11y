@@ -14,8 +14,8 @@ const ServicesCards = ({ title, links, icon }) => {
       </div>
       <div className="services-card-bottom">
         <ul>
-          {links.map(({ link }) => (
-            <li className="services-card-bottom-items">
+          {links.map(({ link }, id) => (
+            <li key={id} className="services-card-bottom-items">
               <a href="#">{link}</a>
             </li>
           ))}

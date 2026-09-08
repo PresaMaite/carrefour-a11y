@@ -83,7 +83,7 @@ const Header = ({ headerType = "classic" }) => {
       ) : (
         <header className="header-container-cart">
           <img src={carrefourLogo} className="logo" alt="Carrefour logo" />
-          <ol class="stepper-step-list">
+          <ol className="stepper-step-list">
             <li
               aria-current="true"
               className="stepper-step-list-item stepper-step-list-item-active"

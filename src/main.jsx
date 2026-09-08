@@ -6,6 +6,7 @@ import Cart from "./pages/Cart.jsx/Cart.jsx";
 import { CartProvider } from "./context/CartProvider.jsx";
 import { useCart } from "./context/CartContext.jsx";
 import CartModal from "./components/CartModal/CartModal";
+import { DataProvider } from "./context/DataProvider.jsx";
 
 export function ModalHandler() {
   const { deleteConfirm, confirmDelete, cancelDelete, message, closeModal } =
@@ -31,6 +32,7 @@ export function ModalHandler() {
 }
 
 createRoot(document.getElementById("root")).render(
+    <DataProvider>
   <CartProvider>
     <BrowserRouter>
       <ModalHandler />
@@ -39,5 +41,6 @@ createRoot(document.getElementById("root")).render(
         <Route path="/carrito" element={<Cart />} />
       </Routes>
     </BrowserRouter>
-  </CartProvider>,
+  </CartProvider>
+    </DataProvider>,
 );
