@@ -119,6 +119,23 @@ summary::after {
   margin: 0;
 }
 
+.footer-bottom {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+}
+
 /* Media query para desktop 1280px y superior */
 @media (min-width: 1280px) {
   .footer-mobile {

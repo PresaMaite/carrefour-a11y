@@ -18,6 +18,7 @@ const Footer = () => {
     <>
       {/* Versión Mobile */}
       <footer className="footer-mobile">
+        <h2 className="visually-hidden">Enlaces de pie de página</h2>
         <div className="footer-container">
           <ul>
             <li>
@@ -283,6 +284,7 @@ const Footer = () => {
 
       {/* Versión Desktop */}
       <footer className="footer-desktop">
+        <h2 className="visually-hidden">Enlaces de interés</h2>
         <ul className="footer-container">
           <li className="footer-section">
             <h3>Grupo Carrefour</h3>
@@ -572,6 +574,8 @@ const Footer = () => {
         </ul>
         <div className="footer-bottom">
           <span>© CENTROS COMERCIALES CARREFOUR, S.A.</span>
+
+          <h3 className="visually-hidden">Enlaces de pie de página</h3>
           <ul>
             <li>
               <a href="#">Cookies</a>
@@ -581,10 +585,15 @@ const Footer = () => {
             </li>
             <li>
               <a href="#">Política de privacidad</a>
+            </li>{" "}
+            <li>
+              <a href="#">Accesibilidad</a>
             </li>
           </ul>
 
-          <h3 id="social-media">Nuestras redes sociales</h3>
+          <h3 id="social-media" className="visually-hidden">
+            Nuestras redes sociales
+          </h3>
           <ul className="social-media" aria-labelledby="social-media">
             <li>
               <a href="#">

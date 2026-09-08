@@ -19,7 +19,7 @@ const CartProduct = ({ product, isCart = false }) => {
       ></img>
 
       <div className="cart-product-info">
-        <h2>{productName}</h2>
+        <h3>{productName}</h3>
         <CartActions
           productName={productName}
           product={product}

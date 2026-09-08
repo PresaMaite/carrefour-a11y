@@ -57,17 +57,22 @@ const Cart = () => {
           ></Link>
           <section aria-labelledby="cart-title">
             <h1 id="cart-title">Mi cesta ({totalCount} productos)</h1>
-            <ul className="cart-product-list" aria-label="Mis productos">
-              {data.length === 0 ? (
-                <li>Tu cesta está vacía</li>
-              ) : (
-                data.map((p) => (
-                  <li key={p.id}>
-                    <CartProduct product={p} isCart={true} />
-                  </li>
-                ))
-              )}
-            </ul>
+            <section aria-labelledby="cart-products-title">
+              <h2 className="visually-hidden" id="cart-products-title">
+                Productos
+              </h2>
+              <ul className="cart-product-list" aria-label="Mis productos">
+                {data.length === 0 ? (
+                  <li>Tu cesta está vacía</li>
+                ) : (
+                  data.map((p) => (
+                    <li key={p.id}>
+                      <CartProduct product={p} isCart={true} />
+                    </li>
+                  ))
+                )}
+              </ul>
+            </section>
 
             <section aria-labelledby="cart-reminder-title">
               <h2 id="cart-reminder-title">Que no se te olvide</h2>
