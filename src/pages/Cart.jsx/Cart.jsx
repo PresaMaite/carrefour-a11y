@@ -116,10 +116,10 @@ const Cart = () => {
                       setCupon(event.target.value);
                     }}
                     placeholder="Ej: DESC25"
-                    aria-describedby={`"ayuda-cupon" ${error ? "cupon-error" : undefined}`}
+                    aria-describedby={`ayuda-cupon ${error ? "cupon-error" : ""}`}
                     aria-invalid={error ? "true" : "false"}
+                    pattern="[a-zA-Z0-9]+"
                   ></input>
-
                   {error && (
                     <p className="cupon-error" id="cupon-error">
                       {error}
